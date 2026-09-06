@@ -1,0 +1,5 @@
+Coloque aqui o logotipo/brasão da paróquia, de preferência em formato
+.png ou .svg com fundo transparente.
+
+Depois, no index.html, troque o círculo com a letra "N" pela imagem:
+<img src="img/logo/logo.png" alt="Logotipo da Paróquia">

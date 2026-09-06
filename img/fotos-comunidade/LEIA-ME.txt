@@ -1,0 +1,8 @@
+Coloque aqui as fotos reais dos eventos da comunidade
+(festa do padroeiro, quermesse, acampamentos, primeira eucaristia, etc).
+
+Os nomes de arquivo devem bater com os que estão em data/galeria.json.
+Exemplo: festa-padroeiro.jpg, quermesse.jpg
+
+Dica: fotos na horizontal (paisagem), com pelo menos 800px de largura,
+carregam rápido e ficam bem na galeria.
