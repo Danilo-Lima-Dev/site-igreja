@@ -144,7 +144,8 @@ nav.menu{ display:none; }
 .cor-pastorais{ background:#C1622B; }
 .cor-contato{ background:#2E6B4F; }
 
-/* Faixa de horários em destaque — sempre visível, empilhada no celular */
+/* Faixa de horários em destaque — agora vive dentro do rodapé,
+   então fica visível em qualquer tamanho de tela */
 .faixa-horarios{ background:var(--cor-vinho); color:#fff; }
 .faixa-horarios .container{ display:flex; flex-direction:column; }
 .item-horario{ padding:14px 4px; border-bottom:1px solid rgba(255,255,255,.18); }
