@@ -11,7 +11,6 @@
    ============================================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
-  configurarMenuMobile();
   configurarMural();
   carregarHorarios();
   carregarAvisos();
@@ -19,27 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   carregarGaleria();
   carregarSantoDoDia();
 });
-
-/* ---------- MENU MOBILE ---------- */
-function configurarMenuMobile(){
-  const botaoMenu = document.getElementById('botaoMenuMobile');
-  const menu = document.getElementById('menuPrincipal');
-  const fundo = document.getElementById('fundoEscurecido');
-  if(!botaoMenu || !menu) return;
-
-  const abrirFechar = () => {
-    menu.classList.toggle('aberto');
-    fundo.classList.toggle('ativo');
-  };
-  botaoMenu.addEventListener('click', abrirFechar);
-  fundo.addEventListener('click', abrirFechar);
-  menu.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', () => {
-      menu.classList.remove('aberto');
-      fundo.classList.remove('ativo');
-    });
-  });
-}
 
 /* ---------- ACORDEÃO DE SACRAMENTOS ---------- */
 function alternarAcordeao(botao){

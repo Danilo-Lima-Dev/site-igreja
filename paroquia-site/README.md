@@ -69,11 +69,33 @@ sem quebrar o resto do site).
 ## Sobre a responsividade (celular)
 
 O site foi construído "mobile-first": o visual base já é pensado para
-telas de celular (menu em painel deslizante, botões grandes e fáceis
-de tocar, uma coluna por vez) e os ajustes para tablet e computador
-ficam nos blocos `@media (min-width: 640px)` e
-`@media (min-width: 900px)` dentro de `css/estilo.css`. Não é preciso
-mexer nisso a não ser que queira mudar o próprio layout.
+telas de celular (botões grandes e fáceis de tocar, uma coluna por
+vez) e os ajustes para tablet e computador ficam nos blocos
+`@media (min-width: 640px)` e `@media (min-width: 900px)` dentro de
+`css/estilo.css`. Não é preciso mexer nisso a não ser que queira mudar
+o próprio layout.
+
+## Navegação por ícones (celular) x menu de texto (computador)
+
+- **No celular/tablet** (tela menor que 900px), a navegação aparece
+  como uma **trilha de círculos coloridos com ícones**, fixa na
+  lateral direita da tela, um para cada seção do site (Início,
+  Horários, Liturgia/Leituras, Avisos, Sacramentos, Pastorais e
+  Contato). É a `<nav class="trilha-icones">` no `index.html`.
+- **No computador** (tela a partir de 900px), essa trilha some e volta
+  o menu de texto tradicional no cabeçalho.
+- Os ícones são desenhados em SVG direto no `index.html` (não
+  dependem de nenhuma biblioteca externa de ícones, então funcionam
+  mesmo sem internet). Cada `<a>` tem um `aria-label` — é o texto que
+  leitores de tela (para pessoas com deficiência visual) usam para
+  anunciar o que aquele ícone representa, já que visualmente só o
+  ícone aparece.
+- Para adicionar uma nova seção à trilha: copie um dos blocos
+  `<a href="#..." class="icone-nav cor-...">` dentro da
+  `<nav class="trilha-icones">`, troque o `href`, o `aria-label`, o
+  SVG do ícone e crie uma nova classe de cor (ex.: `.cor-galeria`) em
+  `css/estilo.css`, junto das já existentes (`.cor-inicio`,
+  `.cor-horarios`, etc).
 
 ## Antes de publicar, não esqueça de:
 

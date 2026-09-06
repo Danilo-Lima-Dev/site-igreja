@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Paróquia Nossa Senhora Aparecida — Site da Comunidade</title>
+<title>Paróquia Santa Maria de Jesus</title>
 <meta name="description" content="Horários de missas, confissões, liturgia diária, avisos e vida da comunidade da Paróquia Nossa Senhora Aparecida.">
 
-<link rel="preconnect" href="https://fonts.google'apis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
@@ -22,17 +22,17 @@
     <a href="#inicio" class="marca">
       <div class="brasao">N</div>
       <div class="marca-texto">
-        <strong>Paróquia Nossa Senhora Aparecida</strong>
-        <span>Bairro Jardim das Flores</span>
+        <strong>Paróquia Santa Maria de Jesus</strong>
+        <span>Bairro Santa Maria de Jesus e Vila Samaritana</span>
       </div>
     </a>
 
     <div class="acoes-topo">
       <a href="#dizimo" class="botao botao-dourado botao-pequeno">Chave PIX</a>
-      <button class="botao-menu-mobile" id="botaoMenuMobile" aria-label="Abrir menu" aria-expanded="false">☰</button>
     </div>
   </div>
 
+  <!-- Menu de texto normal — some no celular, some volta a aparecer no computador (ver css/estilo.css) -->
   <nav class="menu" id="menuPrincipal">
     <a href="#inicio">Início</a>
     <a href="#horarios">Horários</a>
@@ -60,15 +60,44 @@
       </div>
       <div class="item-horario">
         <div class="rot">ENDEREÇO</div>
-        <strong id="enderecoLinha1">Rua das Acácias, 123</strong>
-        <a id="linkMapa" href="https://www.google.com/maps" target="_blank" rel="noopener">Ver no mapa / Waze →</a>
+        <strong id="enderecoLinha1">Rua Eldorado</strong>
+        <a id="linkMapa" href="https://maps.app.goo.gl/SeZofwTf2ktTvgad6" target="_blank" rel="noopener">Ver no mapa / Waze →</a>
       </div>
     </div>
   </div>
 </header>
 
-<!-- Fundo escurecido atrás do menu mobile aberto -->
-<div class="fundo-escurecido" id="fundoEscurecido"></div>
+<!-- ============================================================
+     TRILHA DE ÍCONES — navegação rápida só para celular
+     (no computador ela some e volta o menu de texto lá em cima)
+     Cada link é um atalho para uma seção da página; troque o
+     "href" e o "aria-label" se mudar o nome de alguma seção.
+     ============================================================ -->
+<nav class="trilha-icones" id="trilhaIcones" aria-label="Navegação rápida por ícones">
+  <a href="#inicio" class="icone-nav cor-inicio" aria-label="Início">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 3.2 2.5 11h3V21h5v-6h3v6h5V11h3z"/></svg>
+  </a>
+  <a href="#horarios" class="icone-nav cor-horarios" aria-label="Horários de missas e confissões">
+    <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3.2 2"/>
+    </svg>
+  </a>
+  <a href="#liturgia" class="icone-nav cor-liturgia" aria-label="Liturgia diária e leituras da Bíblia">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 6.3C10.2 4.9 7.6 4 4.5 4v14.2c3.1 0 5.7.9 7.5 2.3 1.8-1.4 4.4-2.3 7.5-2.3V4c-3.1 0-5.7.9-7.5 2.3z"/></svg>
+  </a>
+  <a href="#avisos" class="icone-nav cor-avisos" aria-label="Avisos e eventos da comunidade">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M12 2.3a1.2 1.2 0 0 1 1.2 1.2v.7a6.3 6.3 0 0 1 5.1 6.2v3.2l1.6 3.1a1 1 0 0 1-.9 1.5H5a1 1 0 0 1-.9-1.5l1.6-3.1V10.4a6.3 6.3 0 0 1 5.1-6.2v-.7A1.2 1.2 0 0 1 12 2.3zM9.3 19.6a2.7 2.7 0 0 0 5.4 0z"/></svg>
+  </a>
+  <a href="#sacramentos" class="icone-nav cor-sacramentos" aria-label="Sacramentos: Batismo, Crisma, Matrimônio e Catequese">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M10.4 2h3.2v6.4H20v3.2h-6.4V22h-3.2v-10.4H4V8.4h6.4z"/></svg>
+  </a>
+  <a href="#pastorais" class="icone-nav cor-pastorais" aria-label="Pastorais e movimentos">
+    <svg viewBox="0 0 24 24" fill="#fff"><circle cx="8.3" cy="7.8" r="3"/><path d="M2 20c0-3.4 2.8-6.1 6.3-6.1s6.3 2.7 6.3 6.1z"/><circle cx="17" cy="8.6" r="2.3"/><path d="M14.6 20c.3-2.6 2.2-4.8 4.7-5.6.9.3 1.7.9 2.2 1.7.5.9.8 2 .8 3.1z" opacity=".85"/></svg>
+  </a>
+  <a href="#contato" class="icone-nav cor-contato" aria-label="Contato e fale conosco">
+    <svg viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8c1.4 2.8 3.7 5.1 6.6 6.6l2.1-2.1a1 1 0 0 1 1-.2c1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20.5c0 .6-.4 1-1 1C10.4 21.5 2.9 14 2.9 4.5c0-.6.4-1 1-1H7.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6a1 1 0 0 1-.2 1z"/></svg>
+  </a>
+</nav>
 
 <!-- ============================================================
      HERO / BOAS-VINDAS
@@ -265,7 +294,7 @@
         <div class="qr">[QR Code<br>PIX aqui]</div>
         <div>Chave PIX (CNPJ)</div>
         <div class="chave">00.000.000/0001-00</div>
-        <div style="font-size:.85rem;color:#D9E2E9;">Paróquia Nossa Senhora Aparecida</div>
+        <div style="font-size:.85rem;color:#D9E2E9;">Paróquia Santa Maria de Jesus</div>
       </div>
     </div>
   </div>
@@ -277,9 +306,11 @@
 <footer id="contato">
   <div class="container grade-rodape">
     <div>
-      <h3>Paróquia Nossa Senhora Aparecida</h3>
-      <p>Rua das Acácias, 123 — Jardim das Flores<br>(11) 0000-0000</p>
-      <div class="mapa-rodape">[Insira aqui o iframe do Google Maps com a localização da igreja — obtenha o código em "Compartilhar &gt; Incorporar mapa" no Google Maps]</div>
+      <h3>Paróquia Santa Maria de Jesus</h3>
+      <p>Rua Eldorado — Santa Maria de Jesus<br>(86) 98101-5601</p>
+      <div class="mapa-rodape">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3973.9877995188806!2d-42.7801328!3d-5.0883204!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x78e33b121269056%3A0x8f3fc8346c24778f!2sIgreja%20de%20Santa%20Maria%20M%C3%A3e%20de%20Jesus!5e0!3m2!1spt-BR!2sbr!4v1725656513000!5m2!1spt-BR!2sbr" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
     </div>
     <div>
       <h3>Redes sociais</h3>

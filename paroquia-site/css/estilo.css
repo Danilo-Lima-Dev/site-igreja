@@ -1,5 +1,5 @@
 /* ============================================================
-   PARÓQUIA NOSSA SENHORA APARECIDA — FOLHA DE ESTILOS
+   PARÓQUIA SANTA MARIA DE JESUS — FOLHA DE ESTILOS
    Escrita "mobile-first": o estilo base é o do celular.
    As telas maiores (tablet/computador) são ajustadas depois,
    dentro dos blocos @media (min-width: ...) lá no final do arquivo.
@@ -102,32 +102,47 @@ header.topo{
 .marca-texto strong{ display:block; font-family:var(--serif); font-size:1rem; line-height:1.2; }
 .marca-texto span{ display:block; font-size:.78rem; color:var(--cor-texto-suave); }
 
-/* Menu: no celular vira painel deslizante em tela cheia */
-nav.menu{
-  position:fixed; top:0; right:0; bottom:0;
-  width:82%; max-width:340px;
-  background:var(--cor-cartao);
-  display:flex; flex-direction:column; gap:0;
-  padding:88px 24px 24px;
-  transform:translateX(100%);
-  transition:transform .25s ease;
-  overflow-y:auto;
-  box-shadow:-8px 0 24px rgba(0,0,0,.15);
-}
-nav.menu.aberto{ transform:translateX(0); }
-nav.menu a{ color:var(--cor-texto); text-decoration:none; font-weight:600; padding:16px 0; border-bottom:var(--borda); font-size:1.1rem; }
-nav.menu a:hover{ color:var(--cor-vinho); }
+/* Menu de texto: no celular fica escondido (a navegação vira a
+   trilha de ícones lateral, ver mais abaixo). Só volta a aparecer
+   como barra horizontal no computador, dentro do @media (min-width:900px) */
+nav.menu{ display:none; }
 
 .acoes-topo{ display:flex; align-items:center; gap:10px; }
 .acoes-topo .botao{ width:auto; }
-.botao-menu-mobile{
-  background:none; border:0; font-size:1.6rem; cursor:pointer; color:var(--cor-texto);
-  min-width:44px; min-height:44px;
+
+/* ---------- TRILHA DE ÍCONES (navegação do celular) ---------- */
+.trilha-icones{
+  position:fixed;
+  top:50%;
+  right:10px;
+  transform:translateY(-50%);
+  z-index:55;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  max-height:78vh;
+  overflow-y:auto;
+  scrollbar-width:none; /* Firefox */
 }
-.fundo-escurecido{
-  display:none; position:fixed; inset:0; background:rgba(0,0,0,.35); z-index:45;
+.trilha-icones::-webkit-scrollbar{ display:none; } /* Chrome/Safari */
+
+.icone-nav{
+  width:48px; height:48px;
+  border-radius:50%;
+  display:flex; align-items:center; justify-content:center;
+  text-decoration:none; flex-shrink:0;
+  box-shadow:0 4px 10px rgba(0,0,0,.25);
+  border:2px solid rgba(255,255,255,.6);
 }
-.fundo-escurecido.ativo{ display:block; }
+.icone-nav svg{ width:24px; height:24px; } /* a cor de preenchimento vem do próprio SVG no HTML */
+
+.cor-inicio{ background:var(--cor-vinho); }
+.cor-horarios{ background:var(--cor-dourado); }
+.cor-liturgia{ background:var(--cor-azul); }
+.cor-avisos{ background:var(--cor-verde); }
+.cor-sacramentos{ background:#5B3A73; }
+.cor-pastorais{ background:#C1622B; }
+.cor-contato{ background:#2E6B4F; }
 
 /* Faixa de horários em destaque — sempre visível, empilhada no celular */
 .faixa-horarios{ background:var(--cor-vinho); color:#fff; }
@@ -339,15 +354,17 @@ footer a{ color:#E7DFCF; }
   .marca-texto strong{ font-size:1.15rem; }
   .marca-texto span{ font-size:.85rem; }
 
-  /* menu volta a ser uma barra horizontal normal */
+  /* menu de texto volta a aparecer, como barra horizontal normal */
   nav.menu{
-    position:static; width:auto; max-width:none; flex-direction:row; gap:28px;
-    padding:0; transform:none; box-shadow:none; overflow:visible;
+    display:flex; flex-direction:row; gap:28px;
   }
-  nav.menu a{ padding:0; border-bottom:0; font-size:.98rem; }
-  .botao-menu-mobile{ display:none; }
-  .fundo-escurecido{ display:none !important; }
+  nav.menu a{ color:var(--cor-texto); text-decoration:none; font-weight:600; font-size:.98rem; }
+  nav.menu a:hover{ color:var(--cor-vinho); }
   .acoes-topo .botao{ width:auto; }
+
+  /* a trilha de ícones é só para celular/tablet — no computador some
+     e a navegação volta a ser o menu de texto acima */
+  .trilha-icones{ display:none; }
 
   .faixa-horarios .container{ flex-direction:row; }
   .item-horario{
