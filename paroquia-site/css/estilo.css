@@ -245,6 +245,14 @@ form.mural textarea{ resize:vertical; min-height:90px; }
 
 /* ---------- SACRAMENTOS (acordeão) ---------- */
 .acordeao{ margin-top:8px; border-top:var(--borda); }
+/* ---------- CABEÇALHO DA LITURGIA DIÁRIA ---------- */
+.cabecalho-liturgia{ display:flex; align-items:flex-start; gap:12px; margin-bottom:14px; }
+.bolinha-cor{
+  width:16px; height:16px; border-radius:50%; flex-shrink:0; margin-top:6px;
+  border:1px solid rgba(43,36,24,.25); background:var(--cor-fundo-alt);
+}
+.data-liturgia{ margin:2px 0 0; color:var(--cor-texto-suave); font-size:.9rem; }
+.fonte-liturgia{ margin:14px 0 0; font-size:.82rem; color:var(--cor-texto-suave); }
 .item-acordeao{ border-bottom:var(--borda); }
 .item-acordeao button.pergunta{
   width:100%; text-align:left; background:none; border:0; cursor:pointer;
@@ -393,3 +401,12 @@ footer a{ color:#E7DFCF; }
   .whatsapp-flutuante{ width:60px; height:60px; bottom:26px; right:26px; font-size:1.7rem; }
   .botao{ width:auto; }
 }
+/* ---------- "LER BIOGRAFIA COMPLETA" DO SANTO DO DIA ---------- */
+.detalhes-santo{ margin-top:10px; text-align:left; }
+.detalhes-santo summary{
+  cursor:pointer; color:var(--cor-vinho); font-weight:700; font-size:.9rem;
+  list-style:none; /* remove a setinha padrão do navegador */
+}
+.detalhes-santo summary::-webkit-details-marker{ display:none; } /* idem, no Chrome/Safari */
+.detalhes-santo[open] summary{ margin-bottom:8px; }
+.detalhes-santo p{ color:var(--cor-texto-suave); font-size:.92rem; }

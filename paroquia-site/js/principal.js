@@ -15,8 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   carregarHorarios();
   carregarAvisos();
   carregarPastorais();
-  carregarGaleria();
+  carregarGaleria(); 
   carregarSantoDoDia();
+  carregarLiturgiaDiaria();
 });
 
 /* ---------- ACORDEÃO DE SACRAMENTOS ---------- */
@@ -105,13 +106,84 @@ async function carregarGaleria(){
   `).join('');
 }
 
-async function carregarSantoDoDia(){
-  const dados = await buscarJSON('data/santo-do-dia.json');
-  if(!dados) return;
-  const moldura = document.getElementById('molduraSanto');
-  moldura.innerHTML = `
-    <img src="${dados.imagem}" alt="${dados.nome}"
-         onerror="this.remove();">
-  `;
-  document.getElementById('resumoSanto').textContent = dados.resumo;
+async function carregarSantoDoDia() {
+  try {
+    // Endpoint direto para o dia de hoje
+    const resposta = await fetch('https://liturgia.up.railway.app/');
+    if (!resposta.ok) throw new Error('Falha ao buscar a liturgia do dia');
+    
+    const dados = await resposta.json();
+    
+    // A estrutura desta API devolve o campo "santo"
+    const santoNome = dados.santo || 'Santo do Dia';
+    const textoLimpo = (dados.liturgia || 'Sem informações adicionais').replace(/\s+/g, ' ').trim();
+
+    const resumo = textoLimpo.length > 260
+      ? textoLimpo.slice(0, 260).replace(/\s+\S*$/, '') + '…'
+      : textoLimpo;
+
+    document.getElementById('nomeSanto').textContent = santoNome;
+    document.getElementById('resumoSanto').textContent = resumo;
+    document.getElementById('textoCompletoSanto').textContent = textoLimpo;
+    document.getElementById('detalhesSanto').hidden = false;
+
+  } catch (erro) {
+    console.warn('Não foi possível carregar o santo do dia automaticamente.', erro);
+    document.getElementById('resumoSanto').textContent = 'Não foi possível carregar agora. Tente novamente mais tarde.';
+  }
+}
+/* ---------- LITURGIA DIÁRIA (busca automática, todo dia) ---------- */
+async function carregarLiturgiaDiaria(){
+  const cores = {
+    'Verde': 'var(--cor-verde)',
+    'Vermelho': 'var(--cor-vinho)',
+    'Roxo': '#5B3A73',
+    'Rosa': '#C97B94',
+    'Branco': '#FBF7EE'
+  };
+
+  try{
+    const resposta = await fetch('https://liturgia.up.railway.app/v2/');
+    if(!resposta.ok) throw new Error('Falha ao buscar a liturgia do dia');
+    const dados = await resposta.json();
+
+    document.getElementById('nomeLiturgia').textContent = dados.liturgia;
+    document.getElementById('dataLiturgia').textContent = `${dados.data} · Cor litúrgica: ${dados.cor}`;
+    document.getElementById('corLiturgica').style.background = cores[dados.cor] || 'var(--cor-fundo-alt)';
+
+    const secoes = [
+      { chave: 'primeiraLeitura', rotulo: 'Primeira Leitura' },
+      { chave: 'salmo',           rotulo: 'Salmo Responsorial' },
+      { chave: 'segundaLeitura',  rotulo: 'Segunda Leitura' },
+      { chave: 'evangelho',       rotulo: 'Evangelho' }
+    ];
+
+    let html = '';
+    let ehAPrimeira = true;
+    secoes.forEach((secao) => {
+      const leituras = dados.leituras[secao.chave] || [];
+      leituras.forEach((leitura) => {
+        const textoExtra = leitura.refrao ? `<p><em>${leitura.refrao}</em></p>` : '';
+        html += `
+          <div class="item-acordeao${ehAPrimeira ? ' aberto' : ''}">
+            <button class="pergunta" onclick="alternarAcordeao(this)">
+              ${secao.rotulo} — ${leitura.referencia} <span class="sinal">+</span>
+            </button>
+            <div class="resposta">
+              ${textoExtra}
+              <p>${leitura.texto}</p>
+            </div>
+          </div>
+        `;
+        ehAPrimeira = false;
+      });
+    });
+
+    document.getElementById('acordeaoLeituras').innerHTML = html;
+
+  }catch(erro){
+    console.warn('Não foi possível carregar a liturgia diária automaticamente.', erro);
+    document.getElementById('nomeLiturgia').textContent = 'Não foi possível carregar a liturgia de hoje agora';
+    document.getElementById('dataLiturgia').textContent = 'Tente novamente mais tarde, ou acesse pelo link da fonte abaixo.';
+  }
 }
