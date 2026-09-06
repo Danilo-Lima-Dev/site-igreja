@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paróquia Nossa Senhora Aparecida — Site da Comunidade</title>
+<meta name="description" content="Horários de missas, confissões, liturgia diária, avisos e vida da comunidade da Paróquia Nossa Senhora Aparecida.">
+
+<link rel="preconnect" href="https://fonts.google'apis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+
+<!-- ============================================================
+     CABEÇALHO
+     ============================================================ -->
+<header class="topo">
+  <div class="barra-principal">
+    <a href="#inicio" class="marca">
+      <div class="brasao">N</div>
+      <div class="marca-texto">
+        <strong>Paróquia Nossa Senhora Aparecida</strong>
+        <span>Bairro Jardim das Flores</span>
+      </div>
+    </a>
+
+    <div class="acoes-topo">
+      <a href="#dizimo" class="botao botao-dourado botao-pequeno">Chave PIX</a>
+      <button class="botao-menu-mobile" id="botaoMenuMobile" aria-label="Abrir menu" aria-expanded="false">☰</button>
+    </div>
+  </div>
+
+  <nav class="menu" id="menuPrincipal">
+    <a href="#inicio">Início</a>
+    <a href="#horarios">Horários</a>
+    <a href="#liturgia">Liturgia Diária</a>
+    <a href="#avisos">Avisos</a>
+    <a href="#sacramentos">Sacramentos</a>
+    <a href="#pastorais">Pastorais</a>
+    <a href="#contato">Contato</a>
+  </nav>
+
+  <!-- Faixa de horários em destaque, sempre visível no topo -->
+  <div class="faixa-horarios" id="horarios">
+    <div class="container">
+      <div class="item-horario">
+        <div class="rot">MISSAS</div>
+        <div id="listaMissas"><strong>Ter a Sáb — 19h</strong><strong>Dom — 7h, 9h e 19h</strong></div>
+      </div>
+      <div class="item-horario">
+        <div class="rot">CONFISSÕES</div>
+        <div id="listaConfissoes"><strong>Sáb — 17h às 18h30</strong><strong>Dom — 30 min antes das missas</strong></div>
+      </div>
+      <div class="item-horario">
+        <div class="rot">SECRETARIA</div>
+        <div id="listaSecretaria"><strong>Seg a Sex — 9h às 17h</strong><strong>(11) 0000-0000</strong></div>
+      </div>
+      <div class="item-horario">
+        <div class="rot">ENDEREÇO</div>
+        <strong id="enderecoLinha1">Rua das Acácias, 123</strong>
+        <a id="linkMapa" href="https://www.google.com/maps" target="_blank" rel="noopener">Ver no mapa / Waze →</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- Fundo escurecido atrás do menu mobile aberto -->
+<div class="fundo-escurecido" id="fundoEscurecido"></div>
+
+<!-- ============================================================
+     HERO / BOAS-VINDAS
+     ============================================================ -->
+<section class="hero" id="inicio">
+  <div class="container hero-grid">
+    <div>
+      <p class="rotulo">Sejam bem-vindos</p>
+      <h1>Uma comunidade que reza, celebra e caminha junta.</h1>
+      <p class="acolhida">A Paróquia Nossa Senhora Aparecida abre as portas todos os dias para quem busca oração, acolhida e comunhão. Confira os horários, as leituras do dia e as novidades da nossa comunidade.</p>
+      <div class="hero-botoes">
+        <a href="#horarios" class="botao botao-primario">Ver horários de missas e confissões</a>
+        <a href="#liturgia" class="botao botao-contorno">Leitura do dia</a>
+      </div>
+
+      <div class="assinatura-paroco">
+        <div class="foto-pequena">[foto do<br>padre]</div>
+        <div>
+          <p>"Que a paz de Cristo esteja sempre com vocês e com suas famílias. A casa do Pai está sempre aberta."</p>
+          <strong>Pe. [Nome do Pároco]</strong>
+        </div>
+      </div>
+    </div>
+
+    <div class="foto-moldura">
+      [Substitua por uma foto real e bem iluminada da fachada da igreja ou de uma missa da própria comunidade — salve em img/fotos-comunidade/ e troque este bloco por &lt;img src="img/fotos-comunidade/sua-foto.jpg"&gt;]
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     VIDA ESPIRITUAL DIÁRIA — Liturgia, Santo do Dia, Mural de Oração
+     ============================================================ -->
+<section class="fundo-alt" id="liturgia">
+  <div class="container">
+    <p class="rotulo">Todos os dias</p>
+    <h2 class="titulo-secao">Vida de oração e liturgia diária</h2>
+    <hr class="regra">
+
+    <div class="grade-tres">
+      <div class="cartao destaque-topo">
+        <h3>Liturgia Diária</h3>
+        <p>Primeira leitura, salmo, evangelho e reflexão do dia, preparados para acompanhar sua oração pessoal ou em família.</p>
+        <a href="https://www.liturgiadiaria.com.br" target="_blank" rel="noopener" class="botao botao-contorno botao-pequeno" style="margin-top:10px;">Ler as leituras de hoje</a>
+      </div>
+
+      <div class="cartao santo-do-dia">
+        <div class="moldura-santo" id="molduraSanto">[imagem do<br>santo do dia]</div>
+        <h3>Santo do Dia</h3>
+        <p id="resumoSanto" style="color:var(--cor-texto-suave);font-size:.95rem;">Breve resumo de três linhas sobre a vida e o testemunho do santo ou santa celebrado hoje pela Igreja.</p>
+      </div>
+
+      <div class="cartao">
+        <h3>Mural de Intenções</h3>
+        <p style="margin-bottom:14px;">Deixe aqui seu pedido de oração. As intenções recebidas até sexta-feira são lidas nas missas de domingo.</p>
+        <form class="mural" id="formMural">
+          <input type="text" placeholder="Seu nome (opcional)" aria-label="Seu nome">
+          <textarea placeholder="Sua intenção de oração" aria-label="Sua intenção de oração" required></textarea>
+          <button type="submit" class="botao botao-primario">Enviar intenção</button>
+          <span class="aviso-envio" id="avisoIntencao">Intenção recebida. Ela será levada em oração pela comunidade. 🙏</span>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     AVISOS PAROQUIAIS E EVENTOS
+     ============================================================ -->
+<section id="avisos">
+  <div class="container">
+    <p class="rotulo">Fique por dentro</p>
+    <h2 class="titulo-secao">Avisos da semana e eventos próximos</h2>
+    <hr class="regra">
+
+    <div class="grade-avisos" id="gradeAvisos">
+      <!-- Preenchido automaticamente a partir de data/avisos.json -->
+    </div>
+    <p style="margin-top:22px;color:var(--cor-texto-suave);font-size:.95rem;">Para atualizar os avisos toda semana, edite o arquivo <code>data/avisos.json</code> — não é preciso mexer no restante do site.</p>
+  </div>
+</section>
+
+<!-- ============================================================
+     GALERIA DE FOTOS
+     ============================================================ -->
+<section class="fundo-alt">
+  <div class="container">
+    <p class="rotulo">Nossa comunidade</p>
+    <h2 class="titulo-secao">Galeria de eventos recentes</h2>
+    <hr class="regra">
+    <div class="grade-galeria" id="gradeGaleria">
+      <!-- Preenchido automaticamente a partir de data/galeria.json -->
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SACRAMENTOS — guia em acordeão
+     ============================================================ -->
+<section id="sacramentos">
+  <div class="container">
+    <p class="rotulo">Informações práticas</p>
+    <h2 class="titulo-secao">Sacramentos: como agendar e o que levar</h2>
+    <hr class="regra">
+
+    <div class="acordeao">
+      <div class="item-acordeao aberto">
+        <button class="pergunta" onclick="alternarAcordeao(this)">
+          Batismo <span class="sinal">+</span>
+        </button>
+        <div class="resposta">
+          <p>Realizado aos domingos, às 11h30, após inscrição prévia na secretaria.</p>
+          <ul>
+            <li>Certidão de nascimento da criança (original e cópia)</li>
+            <li>RG dos pais e padrinhos</li>
+            <li>Comprovante de participação na catequese de pais e padrinhos</li>
+            <li>Taxa simbólica de contribuição (consulte a secretaria)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="item-acordeao">
+        <button class="pergunta" onclick="alternarAcordeao(this)">
+          Primeira Eucaristia e Crisma <span class="sinal">+</span>
+        </button>
+        <div class="resposta">
+          <p>Preparação através da catequese, com duração de dois anos. Inscrições abertas em março e agosto.</p>
+          <ul>
+            <li>Certidão de batismo</li>
+            <li>Frequência mínima de 80% nos encontros</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="item-acordeao">
+        <button class="pergunta" onclick="alternarAcordeao(this)">
+          Matrimônio <span class="sinal">+</span>
+        </button>
+        <div class="resposta">
+          <p>Procurar a secretaria com pelo menos quatro meses de antecedência para o curso de noivos e a documentação.</p>
+          <ul>
+            <li>Certidão de batismo atualizada (emitida há menos de 6 meses)</li>
+            <li>RG e CPF dos noivos</li>
+            <li>Certidão de nascimento ou casamento civil</li>
+            <li>Participação no curso de preparação para o matrimônio</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="item-acordeao">
+        <button class="pergunta" onclick="alternarAcordeao(this)">
+          Catequese <span class="sinal">+</span>
+        </button>
+        <div class="resposta">
+          <p>Encontros semanais aos sábados, das 14h às 15h30, no salão paroquial, para crianças a partir de 7 anos.</p>
+          <ul>
+            <li>Ficha de inscrição preenchida na secretaria</li>
+            <li>Cópia da certidão de nascimento</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     PASTORAIS E MOVIMENTOS
+     ============================================================ -->
+<section class="fundo-alt" id="pastorais">
+  <div class="container">
+    <p class="rotulo">Participe</p>
+    <h2 class="titulo-secao">Nossas pastorais e movimentos</h2>
+    <hr class="regra">
+
+    <div class="grade-pastorais" id="gradePastorais">
+      <!-- Preenchido automaticamente a partir de data/pastorais.json -->
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     DÍZIMO / TRANSPARÊNCIA
+     ============================================================ -->
+<section id="dizimo">
+  <div class="container">
+    <div class="bloco-dizimo">
+      <div>
+        <p class="rotulo" style="color:#B9CBDA;">Transparência e dízimo</p>
+        <h2>Sua contribuição sustenta a missão da nossa paróquia</h2>
+        <p>Todo recurso arrecadado é usado na manutenção da igreja, nas obras sociais e no apoio às famílias da comunidade. A prestação de contas é apresentada trimestralmente no mural da secretaria e neste site.</p>
+        <a href="#" class="botao botao-contorno" style="border-color:#fff;color:#fff;margin-top:10px;width:auto;">Ver prestação de contas</a>
+      </div>
+      <div class="caixa-pix">
+        <div class="qr">[QR Code<br>PIX aqui]</div>
+        <div>Chave PIX (CNPJ)</div>
+        <div class="chave">00.000.000/0001-00</div>
+        <div style="font-size:.85rem;color:#D9E2E9;">Paróquia Nossa Senhora Aparecida</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     RODAPÉ
+     ============================================================ -->
+<footer id="contato">
+  <div class="container grade-rodape">
+    <div>
+      <h3>Paróquia Nossa Senhora Aparecida</h3>
+      <p>Rua das Acácias, 123 — Jardim das Flores<br>(11) 0000-0000</p>
+      <div class="mapa-rodape">[Insira aqui o iframe do Google Maps com a localização da igreja — obtenha o código em "Compartilhar &gt; Incorporar mapa" no Google Maps]</div>
+    </div>
+    <div>
+      <h3>Redes sociais</h3>
+      <div class="redes">
+        <a href="#" aria-label="Instagram">IG</a>
+        <a href="#" aria-label="Facebook">FB</a>
+        <a href="#" aria-label="YouTube">YT</a>
+      </div>
+    </div>
+    <div>
+      <h3>Atalhos</h3>
+      <p>
+        <a href="#horarios">Horários</a><br>
+        <a href="#sacramentos">Sacramentos</a><br>
+        <a href="#dizimo">Dízimo / PIX</a>
+      </p>
+    </div>
+  </div>
+  <div class="linha-final">
+    <span>© 2026 Paróquia Nossa Senhora Aparecida</span>
+    <span>Feito com carinho pela comunidade</span>
+  </div>
+</footer>
+
+<!-- Botão flutuante de WhatsApp -->
+<a class="whatsapp-flutuante" href="https://wa.me/5511900000000" target="_blank" rel="noopener" aria-label="Falar com a secretaria pelo WhatsApp">📞</a>
+
+<script src="js/principal.js"></script>
+</body>
+</html>

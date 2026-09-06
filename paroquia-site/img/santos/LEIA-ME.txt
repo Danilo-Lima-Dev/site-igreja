@@ -1,0 +1,5 @@
+Coloque aqui a imagem do Santo do Dia (pode trocar diariamente ou
+manter uma imagem fixa por enquanto).
+
+O nome do arquivo deve bater com o campo "imagem" em
+data/santo-do-dia.json.

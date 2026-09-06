@@ -1,0 +1,10 @@
+{
+  "missas": ["Terça a Sábado — 19h", "Domingo — 7h, 9h e 19h"],
+  "confissoes": ["Sábado — 17h às 18h30", "Domingo — 30 min antes das missas"],
+  "secretaria": ["Segunda a Sexta — 9h às 17h", "Telefone: (11) 0000-0000"],
+  "endereco": {
+    "linha1": "Rua das Acácias, 123",
+    "linha2": "Jardim das Flores",
+    "link_mapa": "https://www.google.com/maps"
+  }
+}
