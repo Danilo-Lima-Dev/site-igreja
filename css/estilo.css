@@ -93,7 +93,7 @@ header.topo{
 }
 .marca{ display:flex; align-items:center; gap:10px; text-decoration:none; color:var(--cor-texto); min-width:0; }
 .brasao{
-  width:42px; height:42px; border-radius:50%;
+  width:50px; height:50px; border-radius:50%;
   background:var(--cor-vinho);
   display:flex; align-items:center; justify-content:center;
   color:#fff; font-family:var(--serif); font-size:1.2rem; flex-shrink:0;
@@ -113,8 +113,8 @@ nav.menu{ display:none; }
 /* ---------- TRILHA DE ÍCONES (navegação do celular) ---------- */
 .trilha-icones{
   position:fixed;
-  top:50%;
-  right:10px;
+  top:45%;
+  right:5px;
   transform:translateY(-50%);
   z-index:55;
   display:flex;
@@ -123,6 +123,9 @@ nav.menu{ display:none; }
   max-height:78vh;
   overflow-y:auto;
   scrollbar-width:none; /* Firefox */
+}
+body{
+  padding-right: 55px; /*48px do icone + 5px da borda direita + folga*/
 }
 .trilha-icones::-webkit-scrollbar{ display:none; } /* Chrome/Safari */
 
@@ -177,7 +180,7 @@ nav.menu{ display:none; }
   text-align:center; color:var(--cor-texto-suave); font-size:.9rem; padding:20px;
   overflow:hidden;
 }
-.foto-moldura img{ width:100%; height:100%; object-fit:cover; }
+.foto-moldura img{ width:160%; height:150%; object-fit:cover; }
 
 .assinatura-paroco{
   display:flex; gap:14px; align-items:flex-start; margin-top:28px;
@@ -262,7 +265,7 @@ form.mural textarea{ resize:vertical; min-height:90px; }
 }
 .item-acordeao .sinal{ font-size:1.3rem; color:var(--cor-dourado); flex-shrink:0; transition:transform .2s ease; }
 .item-acordeao .resposta{ max-height:0; overflow:hidden; transition:max-height .25s ease; padding:0 2px; color:var(--cor-texto-suave); }
-.item-acordeao.aberto .resposta{ max-height:600px; padding-bottom:20px; }
+.item-acordeao.aberto .resposta{ max-height:5000px; padding-bottom:20px; }
 .item-acordeao.aberto .sinal{ transform:rotate(45deg); }
 .resposta ul{ margin:8px 0 0; padding-left:20px; }
 .resposta li{ margin-bottom:6px; }
@@ -312,7 +315,7 @@ footer a{ color:#E7DFCF; }
 .mapa-rodape iframe{ width:100%; height:100%; border:0; }
 .redes{ display:flex; gap:12px; margin-top:6px; }
 .redes a{
-  width:40px; height:40px; border-radius:50%; border:1px solid rgba(255,255,255,.25);
+  width:40px; height:40px; border-radius:50%; border:0px solid rgba(255,255,255,.25);
   display:flex; align-items:center; justify-content:center; text-decoration:none; font-size:.88rem;
 }
 .linha-final{
@@ -347,6 +350,7 @@ footer a{ color:#E7DFCF; }
   .hero-botoes{ flex-direction:row; }
   .hero-botoes .botao{ width:auto; }
   .cartao-pastoral{ flex-direction:row; justify-content:space-between; align-items:center; }
+  .body {padding-right: 0;}
 }
 
 /* ============================================================
