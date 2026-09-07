@@ -369,7 +369,13 @@ footer a{ color:#E7DFCF; }
 
   /* menu de texto volta a aparecer, como barra horizontal normal */
   nav.menu{
-    display:flex; flex-direction:row; gap:28px;
+    display:flex;
+    flex-direction:row;
+    gap: 28px;
+    max-width:1120px;
+    margin:0 auto;
+    padding:0 24px;
+    justify-content:center;
   }
   nav.menu a{ color:var(--cor-texto); text-decoration:none; font-weight:600; font-size:.98rem; }
   nav.menu a:hover{ color:var(--cor-vinho); }
