@@ -1,6 +1,0 @@
-[
-  { "nome": "Catequese", "horario": "Sábados, 14h", "coordenador": "Maria", "telefone": "(11) 90000-0001" },
-  { "nome": "Terço dos Homens", "horario": "Quintas, 6h", "coordenador": "João", "telefone": "(11) 90000-0002" },
-  { "nome": "Vicentinos (SSVP)", "horario": "Terças, 19h30", "coordenador": "Ana", "telefone": "(11) 90000-0003" },
-  { "nome": "Pastoral do Dízimo", "horario": "1ª segunda do mês, 20h", "coordenador": "Pedro", "telefone": "(11) 90000-0004" }
-]

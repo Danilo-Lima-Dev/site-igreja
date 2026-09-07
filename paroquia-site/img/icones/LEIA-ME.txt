@@ -1,3 +1,0 @@
-Espaço reservado para ícones pequenos usados no site
-(ícone do WhatsApp, redes sociais, favicon, etc), caso não queira
-usar os emojis/letras já usados no código.
