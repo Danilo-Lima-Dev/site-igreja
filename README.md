@@ -1,4 +1,4 @@
-# Site da Paróquia Nossa Senhora Aparecida
+# Site da Paróquia Santa Maria de Jesus
 
 Site simples, feito em HTML/CSS/JavaScript puro (sem instalação de nada),
 organizado em pastas para ser fácil de editar no VS Code.
@@ -16,18 +16,24 @@ paroquia-site/
 │   ├── horarios.json       → missas, confissões, secretaria, endereço
 │   ├── avisos.json         → avisos da semana / eventos
 │   ├── pastorais.json      → pastorais e movimentos
-│   ├── galeria.json        → legendas e caminho das fotos da galeria
-│   └── santo-do-dia.json   → nome, resumo e imagem do santo do dia
+│   └── galeria.json        → legendas e caminho das fotos da galeria
 └── img/
     ├── logo/                → logotipo/brasão da paróquia
     ├── fotos-comunidade/     → fotos reais de eventos (festa, quermesse, etc.)
-    ├── santos/               → imagem do santo do dia
-    └── icones/               → ícones pequenos (opcional)
+    └── icones/               → ícones pequenos (logo, redes sociais, etc.)
 ```
 
 A ideia é que **quem cuida do site no dia a dia só precise editar os
 arquivos dentro de `data/`** (e trocar fotos dentro de `img/`), sem
 precisar mexer em HTML, CSS ou JavaScript.
+
+> **Nota:** a seção "Liturgia Diária" (leituras do dia) e o "Santo do
+> Dia" **não** vêm de arquivos locais — eles são buscados
+> automaticamente todos os dias em uma API externa
+> ([liturgia.up.railway.app](https://liturgia.up.railway.app/v2/)).
+> Não há nada para editar manualmente nessas duas seções; elas se
+> atualizam sozinhas. Se um dia essa API sair do ar, as duas seções
+> mostram uma mensagem de aviso em vez de quebrar o resto do site.
 
 ## Como abrir e editar no VS Code
 
@@ -40,25 +46,25 @@ precisar mexer em HTML, CSS ou JavaScript.
    endereço como `http://127.0.0.1:5500`.
 
 ⚠️ **Importante:** o site busca os arquivos dentro de `data/*.json`
-automaticamente (avisos, pastorais, galeria, etc). Isso só funciona
-quando o site é aberto por um servidor local, como o Live Server acima.
-Se você apenas clicar duas vezes no `index.html` para abrir direto no
-navegador (endereço começando com `file://`), essas seções aparecerão
-vazias — é assim que o navegador funciona por segurança, e é por isso
-que o Live Server é recomendado.
+automaticamente (avisos, pastorais, galeria, horários). Isso só
+funciona quando o site é aberto por um servidor local, como o Live
+Server acima. Se você apenas clicar duas vezes no `index.html` para
+abrir direto no navegador (endereço começando com `file://`), essas
+seções aparecerão vazias — é assim que o navegador funciona por
+segurança, e é por isso que o Live Server é recomendado.
 
 ## Como atualizar o conteúdo toda semana
 
 - **Avisos da semana:** edite `data/avisos.json`. Cada aviso tem
   `tipo` (`urgente`, `evento` ou `comum` — muda a cor da barrinha),
   `data`, `titulo` e `texto`.
-- **Horários:** edite `data/horarios.json`.
+- **Horários:** edite `data/horarios.json` (missas, confissões,
+  secretaria e endereço, que aparecem na faixa de horários do
+  rodapé).
 - **Pastorais:** edite `data/pastorais.json`.
 - **Fotos da galeria:** salve a foto dentro de `img/fotos-comunidade/`
   e adicione uma entrada em `data/galeria.json` com a `legenda` e o
   caminho do `arquivo`.
-- **Santo do dia:** edite `data/santo-do-dia.json` e troque a imagem
-  em `img/santos/`.
 
 Todos esses arquivos são `.json` — um formato de texto simples. Tome
 cuidado para manter as aspas `"..."` e vírgulas `,` exatamente como
@@ -80,7 +86,7 @@ o próprio layout.
 - **No celular/tablet** (tela menor que 900px), a navegação aparece
   como uma **trilha de círculos coloridos com ícones**, fixa na
   lateral direita da tela, um para cada seção do site (Início,
-  Horários, Liturgia/Leituras, Avisos, Sacramentos, Pastorais e
+  Liturgia/Leituras, Avisos, Sacramentos, Pastorais, Horários e
   Contato). É a `<nav class="trilha-icones">` no `index.html`.
 - **No computador** (tela a partir de 900px), essa trilha some e volta
   o menu de texto tradicional no cabeçalho.
@@ -97,18 +103,28 @@ o próprio layout.
   `css/estilo.css`, junto das já existentes (`.cor-inicio`,
   `.cor-horarios`, etc).
 
+## Mural de Intenções
+
+O formulário do Mural de Intenções já está funcionando: ao enviar,
+o `js/principal.js` manda o nome e a intenção para um Google Apps
+Script cadastrado no próprio código (dentro de `configurarMural()`).
+Não é preciso conectar nada a mais para ele funcionar.
+
+Se um dia precisar trocar para outro serviço (Formspree, Google
+Forms, etc.), basta substituir a URL dentro da função
+`configurarMural()` em `js/principal.js`.
+
 ## Antes de publicar, não esqueça de:
 
-1. Trocar todos os textos entre colchetes `[assim]` (nome do pároco,
-   telefones, endereço, chave PIX).
-2. Colocar fotos reais nas pastas dentro de `img/` (veja o arquivo
-   `LEIA-ME.txt` de cada pasta).
-3. Trocar o link do Google Maps e o número do WhatsApp (`wa.me/55...`)
-   no `index.html`.
-4. Ligar o Mural de Intenções (formulário) a um serviço real, como o
-   [Formspree](https://formspree.io) (gratuito para poucos envios por
-   mês) ou um Google Forms incorporado — hoje ele só mostra uma
-   mensagem de confirmação, sem enviar de fato a intenção a ninguém.
+1. Trocar os textos e números que ainda estão como exemplo: a chave
+   PIX/CNPJ e o número da secretaria em `data/horarios.json` (o
+   WhatsApp do rodapé já está preenchido).
+2. Conferir se todas as fotos reais estão nas pastas dentro de
+   `img/` (logo, fotos da comunidade e ícones das redes sociais).
+3. Conferir o link do Google Maps embutido no rodapé e o link do
+   "Ver no mapa / Waze" (ambos em `index.html` / `data/horarios.json`).
+4. Trocar o QR Code de exemplo da seção de dízimo por um QR Code PIX
+   real.
 
 ## Como publicar o site (hospedagem gratuita)
 
