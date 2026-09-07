@@ -33,12 +33,27 @@ window.alternarAcordeao = alternarAcordeao; // usado no atributo onclick do HTML
 function configurarMural(){
   const form = document.getElementById('formMural');
   if(!form) return;
-  form.addEventListener('submit', (evento) => {
+
+  form.addEventListener('submit', async (evento) => {
     evento.preventDefault();
-    // Para funcionar de verdade, troque este trecho por uma chamada a um
-    // serviço como Formspree, Google Forms, ou uma automação de WhatsApp.
-    document.getElementById('avisoIntencao').style.display = 'block';
-    form.reset();
+
+    const nome = form.querySelector('input[type="text"]').value;
+    const intencao = form.querySelector('textarea').value;
+
+    try {
+      await fetch('https://script.google.com/macros/s/AKfycby7LaQP04gTmw0_9TuMp9YJcIumaPkusLObKlJGvV9LmHzv2Oi19s5GIERwvqZzWJKm/exec', {
+        method: 'POST',
+        mode: 'no-cors', // necessário para Apps Script; a resposta não pode ser lida, mas o envio funciona
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify({ nome, intencao })
+      });
+
+      document.getElementById('avisoIntencao').style.display = 'block';
+      form.reset();
+    } catch (erro) {
+      console.warn('Não foi possível enviar a intenção agora.', erro);
+      alert('Não foi possível enviar agora. Tente novamente em instantes.');
+    }
   });
 }
 
